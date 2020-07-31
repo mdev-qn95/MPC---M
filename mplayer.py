@@ -26,20 +26,20 @@ play_button_img = PhotoImage(file='images/play.png')
 pause_button_img = PhotoImage(file='images/pause.png')
 stop_button_img = PhotoImage(file='images/stop.png')
 
-#Create Button Frame
+# Create Button Frame
 control_frame = Frame(root)
 control_frame.pack(pady=20)
 
-#Create Play/Stop etc Buttons
+# Create Play/Stop etc Buttons
 back_button = Button(control_frame, image=back_button_img, borderwidth=0)
-forward_button = Button(control_frame, image=forward_button_img, borderwidth=0)
 play_button = Button(control_frame, image=play_button_img, borderwidth=0)
+forward_button = Button(control_frame, image=forward_button_img, borderwidth=0)
 pause_button = Button(control_frame, image=pause_button_img, borderwidth=0)
 stop_button = Button(control_frame, image=stop_button_img, borderwidth=0)
 
 back_button.grid(row=0, column=0, padx=10)
-forward_button.grid(row=0, column=1, padx=10)
-play_button.grid(row=0, column=2, padx=10)
+play_button.grid(row=0, column=1, padx=10)
+forward_button.grid(row=0, column=2, padx=10)
 pause_button.grid(row=0, column=3, padx=10)
 stop_button.grid(row=0, column=4, padx=10)
 
@@ -57,7 +57,7 @@ add_song_menu.add_command(label="Add One Song To Playlist", command=add_song)
 # Add Many Songs To Playlist
 add_song_menu.add_command(label="Add Many Songs To Playlist", command=add_many_songs)
 
-#Temporary Label
+# Temporary Label
 my_label = Label(root, text='')
 my_label.pack(pady=20)
 
