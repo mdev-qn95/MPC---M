@@ -5,6 +5,14 @@ root = Tk()
 root.title("MPC - M")
 root.geometry("1024x768")
 
+# Create Function To Add One Song To Playlist
+def add_song():
+    pass
+
+# Create Function To Add Many Songs To Playlist
+def add_many_songs():
+    pass
+
 # Create Playlist Box
 playlist_box = Listbox(root, bg="#00b894", fg="#dfe6e9", width=100)
 playlist_box.pack(pady=20)
@@ -32,5 +40,19 @@ forward_button.grid(row=0, column=1, padx=10)
 play_button.grid(row=0, column=2, padx=10)
 pause_button.grid(row=0, column=3, padx=10)
 stop_button.grid(row=0, column=4, padx=10)
+
+# Create Menu
+my_menu = Menu(root)
+root.config(menu=my_menu)
+
+# Create Add Song Menu Dropdows
+add_song_menu = Menu(my_menu, tearoff=0)
+my_menu.add_cascade(label="Add Songs", menu=add_song_menu)
+
+# Add One Song To Playlist
+add_song_menu.add_command(label="Add One Song To Playlist", command=add_song)
+
+# Add Many Songs To Playlist
+add_song_menu.add_command(label="Add Many Songs To Playlist", command=add_many_songs)
 
 root.mainloop()
