@@ -8,7 +8,8 @@ root.geometry("1024x768")
 
 # Create Function To Add One Song To Playlist
 def add_song():
-    song = filedialog.askopenfilename()
+    song = filedialog.askopenfilename(initialdir='audio/', title="Choose A Song", filetypes=(("mp3 Files", "*.mp3"), ))
+    my_label.config(text=song)
 
 # Create Function To Add Many Songs To Playlist
 def add_many_songs():
@@ -55,5 +56,9 @@ add_song_menu.add_command(label="Add One Song To Playlist", command=add_song)
 
 # Add Many Songs To Playlist
 add_song_menu.add_command(label="Add Many Songs To Playlist", command=add_many_songs)
+
+#Temporary Label
+my_label = Label(root, text='')
+my_label.pack(pady=20)
 
 root.mainloop()
