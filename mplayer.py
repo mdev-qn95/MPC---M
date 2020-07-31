@@ -16,15 +16,15 @@ def add_many_songs():
     pass
 
 # Create Playlist Box
-playlist_box = Listbox(root, bg="#00b894", fg="#dfe6e9", width=100)
+playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100)
 playlist_box.pack(pady=20)
 
 # Define Button Image For Controls
-back_button_img = PhotoImage(file='images/back50.png')
-forward_button_img = PhotoImage(file='images/forward50.png')
-play_button_img = PhotoImage(file='images/play50.png')
-pause_button_img = PhotoImage(file='images/pause50.png')
-stop_button_img = PhotoImage(file='images/stop50.png')
+back_button_img = PhotoImage(file='images/backward.png')
+forward_button_img = PhotoImage(file='images/forward.png')
+play_button_img = PhotoImage(file='images/play.png')
+pause_button_img = PhotoImage(file='images/pause.png')
+stop_button_img = PhotoImage(file='images/stop.png')
 
 #Create Button Frame
 control_frame = Frame(root)
