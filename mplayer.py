@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import filedialog
 
 root = Tk()
 
@@ -7,7 +8,7 @@ root.geometry("1024x768")
 
 # Create Function To Add One Song To Playlist
 def add_song():
-    pass
+    song = filedialog.askopenfilename()
 
 # Create Function To Add Many Songs To Playlist
 def add_many_songs():
