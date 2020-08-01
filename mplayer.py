@@ -79,6 +79,28 @@ def pause(is_paused):
         pygame.mixer.music.pause()
         paused = True
 
+# Create Function To Play Next Song
+def next_song():
+    # Get current song number
+    next_one = playlist_box.curselection()
+    # Add One To The Current Song Number Tuple/list
+    next_one = next_one[0] + 1
+
+    # Grab the song title from the playlist
+    song = playlist_box.get(next_one)
+    # Add directory structure stuff to the song title
+    song = f'M:/Code/SC/PY/MP3/audio/{song}.mp3'
+    # Load song with pygame mixer
+    pygame.mixer.music.load(song)
+    # Play song with pygame mixer
+    pygame.mixer.music.play(loops=0)
+    # Clear Active Bar in Playlist
+    playlist_box.selection_clear(0,END)
+    # Move active bar to next song
+    playlist_box.activate(next_one)
+    # Set Active Bar To Next Song
+    playlist_box.selection_set(next_one, last=None)
+
 # Create Playlist Box
 playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100, selectbackground="green", selectforeground="black")
 playlist_box.pack(pady=20)
@@ -97,7 +119,7 @@ control_frame.pack(pady=20)
 # Create Play/Stop etc Buttons
 back_button = Button(control_frame, image=back_button_img, borderwidth=0)
 play_button = Button(control_frame, image=play_button_img, borderwidth=0, command=play)
-forward_button = Button(control_frame, image=forward_button_img, borderwidth=0)
+forward_button = Button(control_frame, image=forward_button_img, borderwidth=0, command=next_song)
 pause_button = Button(control_frame, image=pause_button_img, borderwidth=0, command=lambda: pause(paused))
 stop_button = Button(control_frame, image=stop_button_img, borderwidth=0, command=stop)
 
