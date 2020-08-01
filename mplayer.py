@@ -1,10 +1,14 @@
 from tkinter import *
 from tkinter import filedialog
+import pygame
 
 root = Tk()
 
 root.title("MPC - M")
 root.geometry("1024x768")
+
+# Initialize Pygame
+pygame.mixer.init()
 
 # Create Function To Add One Song To Playlist
 def add_song():
@@ -38,6 +42,18 @@ def delete_all_songs():
     # Delete All Songs
     playlist_box.delete(0,END)
 
+# Create Play Function
+def play():
+    # Reconstruct song with directory structure
+    song = playlist_box.get(ACTIVE)
+    song = f'M:/Code/SC/PY/MP3/audio/{song}.mp3'
+
+    # Load song with pygame mixer
+    pygame.mixer.music.load(song)
+
+    # Play song with pygame mixer
+    pygame.mixer.music.play(loops=0)
+
 # Create Playlist Box
 playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100, selectbackground="green", selectforeground="black")
 playlist_box.pack(pady=20)
@@ -55,7 +71,7 @@ control_frame.pack(pady=20)
 
 # Create Play/Stop etc Buttons
 back_button = Button(control_frame, image=back_button_img, borderwidth=0)
-play_button = Button(control_frame, image=play_button_img, borderwidth=0)
+play_button = Button(control_frame, image=play_button_img, borderwidth=0, command=play)
 forward_button = Button(control_frame, image=forward_button_img, borderwidth=0)
 pause_button = Button(control_frame, image=pause_button_img, borderwidth=0)
 stop_button = Button(control_frame, image=stop_button_img, borderwidth=0)
