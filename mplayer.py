@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 import pygame
+import time
 
 root = Tk()
 
@@ -12,9 +13,14 @@ pygame.mixer.init()
 
 # Create Fuction To Deal With Time
 def play_time():
+    # Grab Current Song Time
     current_time = pygame.mixer.music.get_pos()/1000
-    my_label.config(text=int(current_time))
-    my_label.after(1000, play_time)
+    # Convert Song Time To Time Format
+    converted_current_time = time.strftime('%M:%S', time.gmtime(current_time))
+    # Add Current Time To Status Bar
+    status_bar.config(text=f'Time Elapsed: {converted_current_time}')
+    # Create Loop To Check The Time Every Second
+    status_bar.after(1000, play_time)
 
 # Create Function To Add One Song To Playlist
 def add_song():
