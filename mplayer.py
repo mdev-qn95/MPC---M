@@ -9,7 +9,12 @@ root.geometry("1024x768")
 # Create Function To Add One Song To Playlist
 def add_song():
     song = filedialog.askopenfilename(initialdir='audio/', title="Choose A Song", filetypes=(("mp3 Files", "*.mp3"), ))
-    my_label.config(text=song)
+    
+    # Strip out directory structure and .mp3 from song title
+    song = song.replace("M:/Code/SC/PY/MP3/audio/", "")
+    song = song.replace(".mp3", "")
+
+    playlist_box.insert(END, song)
 
 # Create Function To Add Many Songs To Playlist
 def add_many_songs():
