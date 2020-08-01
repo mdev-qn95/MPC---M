@@ -10,6 +10,12 @@ root.geometry("1024x768")
 # Initialize Pygame
 pygame.mixer.init()
 
+# Create Fuction To Deal With Time
+def play_time():
+    current_time = pygame.mixer.music.get_pos()/1000
+    my_label.config(text=int(current_time))
+    my_label.after(1000, play_time)
+
 # Create Function To Add One Song To Playlist
 def add_song():
     song = filedialog.askopenfilename(initialdir='audio/', title="Choose A Song", filetypes=(("mp3 Files", "*.mp3"), ))
@@ -53,6 +59,9 @@ def play():
 
     # Play song with pygame mixer
     pygame.mixer.music.play(loops=0)
+
+    # Get Song Time
+    play_time()
 
 # Create Stop Function
 def stop():
