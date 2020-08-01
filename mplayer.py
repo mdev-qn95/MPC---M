@@ -168,6 +168,12 @@ remove_song_menu = Menu(my_menu, tearoff=0)
 my_menu.add_cascade(label="Remove Songs", menu=remove_song_menu)
 remove_song_menu.add_command(label="Delete A Song From Playlist", command=delete_song)
 remove_song_menu.add_command(label="Delete All Songs From Playlist", command=delete_all_songs)
+
+# Create Status Bar
+status_bar = Label(root, text='nothing', bd=1, relief=GROOVE, anchor=E)
+status_bar.pack(fill=X, side=BOTTOM, ipady=2)
+
+
 # Temporary Label
 my_label = Label(root, text='')
 my_label.pack(pady=20)
