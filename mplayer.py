@@ -54,6 +54,13 @@ def play():
     # Play song with pygame mixer
     pygame.mixer.music.play(loops=0)
 
+# Create Stop Function
+def stop():
+    # Stop the song
+    pygame.mixer.music.stop()
+    #Clear Playlist Bar
+    playlist_box.selection_clear(ACTIVE)
+
 # Create Playlist Box
 playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100, selectbackground="green", selectforeground="black")
 playlist_box.pack(pady=20)
@@ -74,7 +81,7 @@ back_button = Button(control_frame, image=back_button_img, borderwidth=0)
 play_button = Button(control_frame, image=play_button_img, borderwidth=0, command=play)
 forward_button = Button(control_frame, image=forward_button_img, borderwidth=0)
 pause_button = Button(control_frame, image=pause_button_img, borderwidth=0)
-stop_button = Button(control_frame, image=stop_button_img, borderwidth=0)
+stop_button = Button(control_frame, image=stop_button_img, borderwidth=0, command=stop)
 
 back_button.grid(row=0, column=0, padx=10)
 play_button.grid(row=0, column=1, padx=10)
