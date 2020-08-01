@@ -9,19 +9,37 @@ root.geometry("1024x768")
 # Create Function To Add One Song To Playlist
 def add_song():
     song = filedialog.askopenfilename(initialdir='audio/', title="Choose A Song", filetypes=(("mp3 Files", "*.mp3"), ))
-    
+
     # Strip out directory structure and .mp3 from song title
     song = song.replace("M:/Code/SC/PY/MP3/audio/", "")
     song = song.replace(".mp3", "")
-
+    # Add To End of Playlist
     playlist_box.insert(END, song)
 
 # Create Function To Add Many Songs To Playlist
 def add_many_songs():
-    pass
+    songs = filedialog.askopenfilenames(initialdir='audio/', title="Choose A Song", filetypes=(("mp3 Files", "*.mp3"), ))
+
+    #Loop thre song list and replace directory structure and mp3 from song name
+    for song in songs:
+        # Strip out directory structure and .mp3 from song title
+        song = song.replace("M:/Code/SC/PY/MP3/audio/", "")
+        song = song.replace(".mp3", "")
+        # Add To End of Playlist
+        playlist_box.insert(END, song)
+
+# Create Function To Delete One Song From Playlist
+def delete_song():
+    # Delete Highlighted Song From Playlist
+    playlist_box.delete(ANCHOR)
+
+# Create Function To Delete All Songs From Playlist
+def delete_all_songs():
+    # Delete All Songs
+    playlist_box.delete(0,END)
 
 # Create Playlist Box
-playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100)
+playlist_box = Listbox(root, bg="#2f3640", fg="#dfe6e9", width=100, selectbackground="green", selectforeground="black")
 playlist_box.pack(pady=20)
 
 # Define Button Image For Controls
@@ -48,7 +66,7 @@ forward_button.grid(row=0, column=2, padx=10)
 pause_button.grid(row=0, column=3, padx=10)
 stop_button.grid(row=0, column=4, padx=10)
 
-# Create Menu
+# Create Main Menu
 my_menu = Menu(root)
 root.config(menu=my_menu)
 
@@ -62,6 +80,11 @@ add_song_menu.add_command(label="Add One Song To Playlist", command=add_song)
 # Add Many Songs To Playlist
 add_song_menu.add_command(label="Add Many Songs To Playlist", command=add_many_songs)
 
+# Create Delete Song Menu Dropdows
+remove_song_menu = Menu(my_menu, tearoff=0)
+my_menu.add_cascade(label="Remove Songs", menu=remove_song_menu)
+remove_song_menu.add_command(label="Delete A Song From Playlist", command=delete_song)
+remove_song_menu.add_command(label="Delete All Songs From Playlist", command=delete_all_songs)
 # Temporary Label
 my_label = Label(root, text='')
 my_label.pack(pady=20)
